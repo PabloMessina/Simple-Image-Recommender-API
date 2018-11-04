@@ -3,7 +3,7 @@ import numpy as np
 import random
 from os import path as ospath
 from Networks import YoutubeLikeNetwork
-from utils import read_ids_file, get_top_k_indexes, get_explanation_for_maxsim, sigmoid
+from utils import read_ids_file, get_top_k_indexes
 
 class YoutubeLike2StagesModelHandler:
     def __init__(
@@ -17,9 +17,7 @@ class YoutubeLike2StagesModelHandler:
         saver.restore(self._sess, tf.train.latest_checkpoint(youtube_model_path))
 
         self._youtube_item_vectors = np.load(
-            ospath.join(youtube_precomputed_tensors_path, 'item_vectors.npy'))
-        self._youtube_single_item_profile_vectors = np.load(
-            ospath.join(youtube_precomputed_tensors_path, 'single_item_profile_vectors.npy'))
+            ospath.join(youtube_precomputed_tensors_path, 'item_vectors.npy'))        
         self._youtube_index2id,\
         self._youtube_id2index = read_ids_file(youtube_precomputed_tensors_path, 'ids')
 

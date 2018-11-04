@@ -62,7 +62,9 @@ if develop:
         config['develop_youtube_precomputed_tensors_path'],
         config['develop_resnet_precomputed_tensors_path'],
     )
-else:
+else: # production
+    import os
+    os.environ["CUDA_VISIBLE_DEVICES"]="1"
     youtube_handler = YoutubeLike2StagesModelHandler(
         config['production_youtube_model_path'],
         config['production_youtube_precomputed_tensors_path'],

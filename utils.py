@@ -24,14 +24,3 @@ def get_top_k_indexes(scores_array, k):
     heap.sort(reverse=True)
     assert len(heap) == k
     return [t[1] for t in heap]
-
-def get_explanation_for_maxsim(cand2prof_mat, cand_i):
-    best_j = 0
-    best_score = cand2prof_mat[cand_i][0]
-    for j in range(1, cand2prof_mat.shape[1]):
-        if cand2prof_mat[cand_i][j] > best_score:
-            best_score = cand2prof_mat[cand_i][j]
-            best_j = j
-    return best_score, best_j
-
-def sigmoid(x): return 1. / (1. + np.exp(-x))

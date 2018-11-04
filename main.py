@@ -14,7 +14,7 @@ class REC_IDS(IntEnum):
 
 app = Flask(__name__)
 
-@app.route('/rec_api')
+@app.route("/", methods=['GET'])
 def rec_api():
     print('---------- rec_api() -----------')
 

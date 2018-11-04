@@ -1,0 +1,9 @@
+{
+    "production_youtube_model_path": "pending",
+    "production_youtube_precomputed_tensors_path": "pending",
+    "production_resnet_precomputed_tensors_path": "pending",
+    
+    "develop_youtube_model_path": "C:/ugallery-project/OfflineExperiments/trained_models/youtube_like/v5_usermodelbigger",
+    "develop_youtube_precomputed_tensors_path": "C:/ugallery-project/OfflineExperiments/image_descriptors/DNN/Youtube-like/v5_usermodelbigger",
+    "develop_resnet_precomputed_tensors_path": "C:/ugallery-project/OfflineExperiments/image_descriptors/DNN/ResNet50"
+}

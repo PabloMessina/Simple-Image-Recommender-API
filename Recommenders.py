@@ -5,7 +5,7 @@ from os import path as ospath
 from Networks import YoutubeLikeNetwork
 from utils import read_ids_file, get_top_k_indexes
 
-class YoutubeLike2StagesModelHandler:
+class YoutubeLike2StagesRecommender:
     def __init__(
             self,
             youtube_model_path,

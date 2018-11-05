@@ -5,7 +5,7 @@ import numpy as np
 from flask import Flask
 from flask import json
 from flask import request
-from ModelHandlers import YoutubeLike2StagesModelHandler
+from Recommenders import YoutubeLike2StagesRecommender
 
 class REC_IDS(IntEnum):
     YOUTUBE = 6
@@ -30,7 +30,7 @@ def rec_api():
         explained = request.args['explanation'] == 'true'
         print('liked_ids = ', liked_ids)
         print('explained = ', explained)
-        recommendation = youtube_handler.get_recommendation(
+        recommendation = youtube_recommender.get_recommendation(
             liked_ids, VALID_IDS, rec_size, explained)
     else: # unknown recommender
         return app.response_class(
@@ -57,7 +57,7 @@ develop = sys.argv[1] == 'develop'
 
 # instance youtube-like model handler
 if develop:
-    youtube_handler = YoutubeLike2StagesModelHandler(
+    youtube_recommender = YoutubeLike2StagesRecommender(
         config['develop_youtube_model_path'],
         config['develop_youtube_precomputed_tensors_path'],
         config['develop_resnet_precomputed_tensors_path'],
@@ -65,7 +65,7 @@ if develop:
 else: # production
     import os
     os.environ["CUDA_VISIBLE_DEVICES"]="1"
-    youtube_handler = YoutubeLike2StagesModelHandler(
+    youtube_recommender = YoutubeLike2StagesRecommender(
         config['production_youtube_model_path'],
         config['production_youtube_precomputed_tensors_path'],
         config['production_resnet_precomputed_tensors_path'],

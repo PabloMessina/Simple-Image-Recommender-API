@@ -43,7 +43,7 @@ class YoutubeLike2StagesModelHandler:
             candidate_item_indexes = candidate_indexes)
 
         assert match_scores.shape == (len(candidate_indexes),)
-        prefilter_k = min(rec_size * 10, rec_size + 100)
+        prefilter_k = min(rec_size * 10, rec_size + 200)
         filtered_ids = [index2id[candidate_indexes[i]] for i in get_top_k_indexes(
             match_scores, prefilter_k)]
         assert len(filtered_ids) == prefilter_k

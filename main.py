@@ -55,7 +55,7 @@ with open('config.json') as f:
 # read command line arguments
 develop = sys.argv[1] == 'develop'
 
-# instance youtube-like model handler
+# instance youtube-like recommender
 if develop:
     youtube_recommender = YoutubeLike2StagesRecommender(
         config['develop_youtube_model_path'],
